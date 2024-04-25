@@ -120,25 +120,43 @@ app.post('/delete', async (req, res) => {
   const filename = file.split('/');
   const bucketName = 'skyvaultmugu'; // Replace with your bucket name
   const s3 = new AWS.S3();
-
+  
   const params = {
     Bucket: bucketName,
     Key: file,
   };
 
-  try {
-    // Delete file from S3
-    await s3.deleteObject(params).promise();
+  // try {
+  //   // Delete file from S3
+  //   await s3.deleteObject(params).promise();
 
-    // Delete file record from MongoDB
-    await db.collection('files').deleteOne({ file: filename[1] });
+  //   // Delete file record from MongoDB
+  //   await db.collection('files').deleteOne({ file: filename[1] });
 
-    res.status(200).json({ code: 200, message: "Deleted successfully" });
-    console.log("File deleted successfully from S3");
-  } catch (err) {
-    console.error("Error deleting file:", err);
-    res.status(500).json({ code: 500, message: "Error occurred in deleting file" });
-  }
+  //   res.status(200).json({ code: 200, message: "Deleted successfully" });
+  //   console.log("File deleted successfully from S3");
+  // } catch (err) {
+  //   console.error("Error deleting file:", err);
+  //   res.status(500).json({ code: 500, message: "Error occurred in deleting file" });
+  // }
+  // s3.deleteObject(params, async function (err, data) {
+  //   if (err) {
+  //     console.error("Error deleting file from S3:", err);
+  //     res.status(200).json({ code: 500, message: "Error occured in deleting file" });
+  //   } else {
+  //     // await db.query(
+  //     //   "DELETE FROM files WHERE file=$1",
+  //     //   // [filename[1]]
+  //     //   );
+  //     await db.collection('files').deleteOne({ file: filename[1] });
+
+  //     res.status(200).json({ code: 200, message: "Deleted succcesfully" });
+  //     console.log("File deleted successfully from S3");
+  //   }
+  // });
+  await db.collection('files').deleteOne({ file: filename[1] });
+
+  res.status(200).json({ code: 200, message: "Deleted succcesfully" });
 });
 app.post('/upload', upload.single("file"), async (req, res) => {
   const filename = req.file.filename;
