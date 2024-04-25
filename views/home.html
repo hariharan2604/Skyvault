@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Vault</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <script src="https://kit.fontawesome.com/66fd2a570d.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="header">
+        <img src="/img/logo.png" alt="">
+        <div class="buttons">
+            <button onclick="logoutRoute()" id="logOutBTN">Log Out <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        </div>
+    </div>
+    <div class="upload">
+        <label for="Upload">Choose a File to Upload:</label><br>
+        <!-- <input type="file"> -->
+        <input type="file" id="fileInput" name="fileInput" accept=".txt,.pdf,.doc,.docx,.img,.png">
+        <button id="uploadForm">Upload Now <i class="fa-solid fa-upload"></i></button>
+        <div id=""status></div>
+    </div>
+
+    <div id="test">
+    </div>
+    <!-- <br><br>
+    <div id="camOutput"></div>
+    <button id="captureBTN" style="display:none;">Capture</button> -->
+    <script src="/js/home.js"></script>
+</body>
+
+</html>

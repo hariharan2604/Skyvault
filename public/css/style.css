@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body{
+    background-color: #66CCFF;
+    margin: 0;
+}
+
+.home{
+    z-index: 1;
+}
+
+.bgIMG{
+    background-image: url("/img/homeBG.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    mix-blend-mode: color-dodge;
+    filter: opacity(50%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 100px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#Header-Logo-Img{
+    height: 40px;
+    width: auto;
+    margin-right: 15px;
+}
+
+#Header-Logo-Text{
+    font-size: 25px;
+    font-family: Lato;
+    font-weight: 800;
+    color: #004D99;
+}
+
+#Header-CTA-Button{
+    background-color: #004D99;
+    color: #EDEDED;
+    font-family: Lato;
+    font-size: 1.2rem;
+    font-weight: 500;
+    height: 40px;
+    width: 125px;
+    border: none;
+    margin-right: 100px;  
+    border-color: none;
+}
+
+
+.Home-Content{
+    display: flex;
+}
+
+#Hero-Section-Img{
+    mix-blend-mode: multiply;
+    height: auto;
+    width: auto;
+}
+
+.hero-section{
+    margin-top: -20px;
+    margin-right: 100px;
+    font-family: Lato;
+}
+
+.hero-section h1{
+    font-weight: 800;
+    font-size: 4rem;
+    color: #004D99;
+}
+.hero-section h3{
+    font-weight: 400;
+    font-size: 2rem;
+    margin-top: -25px;
+}
+
+.hero-section button{
+    background-color: #004D99;
+    color: #EDEDED;
+    height: 50px;
+    width: 250px;
+    border: none;
+    font-size: 1.3rem;
+
+}
+
+#Header-CTA-Button:hover,.hero-section button:hover{
+    cursor: pointer;
+    background-color: #004D99;
+}
+

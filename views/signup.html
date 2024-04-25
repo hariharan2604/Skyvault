@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Vault - SignUp</title>
+    <link rel="stylesheet" href="/css/form.css">
+    <script src="https://kit.fontawesome.com/66fd2a570d.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="Left-Banner">
+            <img src="/img/logo.png" alt="SkyVaultLogo">
+            <h1>Sky Vault</h1>
+            <h3>Welcome to Sky Vault. Your Secure Online File Storage System Using Cloud</h3>
+        </div>
+        <div>
+            <form class="SignUpForm" method="post" action="/signup">
+                <h1>Sign Up into Sky Vault</h1>
+                <label for="mailID">Enter You G-Mail ID</label><br><br>
+                <input type="email" name="mailID" id="emailID" placeholder="Enter Your Mail ID"><br><br>
+                <label for="Password">Enter Your Password</label>
+                <span id="viewBTN">view</span><br><br>
+                <input type="password" name="password" id="password" placeholder="Enter Your Password"><br><br><br>
+                <button  type="submit" id="SignUpBTN">Sign Up</button>
+                <p id="LogInTag">Already have an Accout? <a id="LogInLink" href="/login">Log In</a></p><br>
+            </form>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>

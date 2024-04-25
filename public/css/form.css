@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body{
+    margin: 0;
+    background-color: #66CCFF;
+    font-family: Lato;
+}
+
+.container{
+    display: flex;
+}
+
+.left-Banner{
+    background-image: url("/img/bg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    align-items: center;
+    height: 650px;
+    width: 45%;
+    background-color: #004D99;
+}
+
+.left-Banner img{
+    margin-top: 15%;
+    width: 300px;
+    height: auto;
+}
+
+.left-Banner h1{
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #EDEDED;
+}
+
+.left-Banner h3, .SignUpForm h3{
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 10% 15%; 
+    color: #66CCFF;
+}
+
+.LoginForm,.SignUpForm{
+    align-items: center;
+    height: 500px;
+}
+
+.LoginForm h1,.SignUpForm h1{
+    margin: 80px 200px 50px 200px;
+    color: #004D99;
+}
+
+.LoginForm label,.SignUpForm label{
+    text-align: left;
+    justify-content: left;
+    color: #004D99;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 150px;
+}
+
+.LoginForm input, .SignUpForm input {
+    height: 50px;
+    width: 60%;
+    margin-left: 150px;
+    font-size: 1.3rem;
+    padding-left: 20px;
+    border: 2px solid #004D99;
+    background-color: #EDEDED;
+    color: #333333;
+}
+
+
+#viewBTN{
+    margin-left: 215px;
+    text-decoration: none;
+    color: #004D99;
+    font-weight: 600;
+}
+
+#viewBTN:hover{
+    cursor: pointer;
+}
+
+#ForgotPwdBTN{
+    margin-left: 460px;
+    text-decoration: none;
+    color: #004D99;
+    font-weight: 600;
+}
+
+.LoginForm button,.SignUpForm button{
+    margin-left: 150px;
+    height: 50px;
+    width: 60%;
+    border: none;
+    color: #EDEDED;
+    background-color: #004D99;
+    font-size: 1.5rem;
+}
+
+.LoginForm button:hover ,.SignUpForm button:hover{
+    cursor: pointer;
+}
+
+#SignUpTag,#LogInTag{
+    color: #333333;
+    font-size: 20px;
+    margin-left: 230px;
+    margin-right: 230px;
+}
+
+#SignUpLink{
+    color: #004D99;
+    text-decoration: none;
+}
+
+#SignUpLink:hover, #viewBTN:hover, #ForgotPwdBTN:hover{
+    text-decoration: underline;
+}

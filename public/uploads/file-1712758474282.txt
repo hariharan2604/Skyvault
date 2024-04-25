@@ -1,0 +1,103 @@
+OBJECTIVE:
+The objective of the Lung Cancer Prediction System is to develop an accurate and reliable computational model capable of predicting the likelihood of an individual developing lung cancer based on various demographic, clinical, and lifestyle factors. This system aims to assist healthcare professionals in identifying individuals who may be at high risk for lung cancer, thereby facilitating early detection, intervention, and personalized treatment strategies. Ultimately, the goal is to improve patient outcomes by enabling timely preventive measures and targeted healthcare interventions to mitigate the impact of lung cancer.
+
+MOTIVATION:
+The motivation behind developing the Lung Cancer Prediction System stems from the pressing need to enhance early detection and intervention strategies for lung cancer, a leading cause of cancer-related deaths worldwide. By leveraging computational models and predictive analytics, we aim to empower healthcare providers with tools to identify high-risk individuals, thereby enabling timely interventions, personalized treatment plans, and improved patient outcomes. This work seeks to address the significant public health challenge posed by lung cancer and contribute to the advancement of preventive healthcare practices.
+
+GOALS:
+1. Develop a Reliable Lung Cancer Prediction System to assist Medical Practicioners in early detection and treatment.
+2. Identify Key Asoociations between Air Pollution and Lung Cancer Incidence
+3. Investigate the Impact of Environmental Factors on Lung Cancer Risk
+4. Improve Accessibility and Usability of the Lung Cancer Prediction System
+
+QUESTIONARIES:
+for GOAL1:
+1. How does the prediction system's performance compare to existing diagnostic methods in terms of sensitivity and specificity?
+2. What is the predictive power of the system across different patient demographics and disease stages?
+for GOAL2:
+1. Does Air Pollution correlate with increased rate of Lung Cancer?
+2. What is the impact of Air Pollution levels on the likelihood of developing lung cancer?
+for GOAL 3:
+1. How do Environmental Factors such as Smoking, Occupational Exposures, and Lifestyle habits contribute to Lung Cancer Risk?
+2. Do Environmental Factors interact with Genetics to Influenct the risk of Lung Cancer?
+for GOAL 4:
+1. How user-friendly is the Lung Cancer Prediction System for medical practitioners with varying levels of technical expertise?
+2. How adaptable is the system in various Environment to increase the Usability?
+
+Direct Metrics:
+1. Lines of Code (LOC)
+2. Execution Speed
+3. Memory Size
+4. Defects Reported Over Time
+5. Training Time
+
+Indirect Metrics:
+1. Quality
+2. Accuracy
+3. Reliability
+4. Efficiency
+5. Insightfulness
+
+Samples identified to meet the objective (choose quantitative data):
+
+Patient Data:
+-Age
+-Gender
+-Alcohol use Level
+-Dust Allergy Level
+-Genetic Risk level
+-Chronic Lung Disease level
+-Balanced Diet 
+-Obesity level
+-Smoking level
+-Chest Pain level
+-Fatigue level
+-Weight loss level
+-Shortness of breath level
+-Wheezing level
+-Swallowing Difficulty Level
+-Clubbing of Fingers
+-Frequent Cold  
+-Dry Cough level
+-Snoring level
+
+Environmental Data:
+-Air Pollution Level
+-Ocupational Hazards
+
+LINK:
+https://www.kaggle.com/datasets/thedevastator/cancer-patients-and-air-pollution-a-new-link
+
+(ITHU VARAIKUM THAN DOCUMENTATION KU !!!!)
+-------------------x------------------x----------------
+
+
+
+
+
+Lung Cancer Prediction:
+link = https://www.kaggle.com/datasets/thedevastator/cancer-patients-and-air-pollution-a-new-link
+
+Direct Metrics:
+
+a. Accuracy: The proportion of correctly classified instances out of the total instances.
+b. Sensitivity (Recall): The proportion of actual positive cases that were correctly identified by the model.
+c. Specificity: The proportion of actual negative cases that were correctly identified by the model.
+d. Precision: The proportion of predicted positive cases that were actually positive.
+e. F1 Score: The harmonic mean of precision and recall, which provides a balance between the two metrics.
+f. Area under the ROC curve (AUC-ROC): The area under the receiver operating characteristic curve, which measures the ability of the model to discriminate between positive and negative cases.
+
+Indirect Metrics:
+
+a. Feature Importance: Indirectly measure the contribution of different features (e.g., patient demographics, medical history, imaging results) to the prediction model.
+b. Model Complexity: Indirectly assess the complexity of the prediction model, which can impact its interpretability and generalizability.
+c. Interpretability: Indirectly evaluate how easily the model's predictions can be understood and interpreted by clinicians and researchers.
+d. False Discovery Rate: Indirectly measure the rate of false positive predictions made by the model, which is crucial for minimizing unnecessary medical interventions.
+e. Calibration: Indirectly assess how well the predicted probabilities align with the actual probabilities of lung cancer occurrence.
+f. Cross-validation Performance: Indirectly measure the stability and generalizability of the prediction model across different subsets of the dataset through techniques like k-fold cross-validation.
+
+DEPENDENT VARIBALE: Level
+INDEPENDENT VARIABLES: Rest of the All Varaibles Except PID, S.No.
+
+RELATIONSHIP:
+(image)
