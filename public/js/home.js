@@ -5,15 +5,12 @@ function logoutRoute() {
 $(document).ready(function(){
   
   
-  var formData = new FormData(); // Create FormData object
-// var fileInput = $('#fileInput')[0].files[0]; // Get the file from input field
-// formData.append('email',"nm17@gmail.com");
+  var formData = new FormData(); 
   $.ajax({
-      url: 'http://localhost:3000/getFiles',
+      url: '/getFiles',
       type: 'POST',
       data: {email:localStorage.getItem('email')},
-      // processData: false, // Prevent jQuery from automatically transforming data into a query string
-      // contentType: false, // Prevent jQuery from automatically setting the Content-Type header
+  
       success: function (response) {
         console.log(response);
         let filesHtml = ''; // Initialize an empty string to store HTML for all files
@@ -44,7 +41,7 @@ $('button[data-id]').each(function(){$(this).click(function() {
   var parentSpan = $(this).parent() ;
   console.log(fileId);
   $.ajax({
-    url: 'http://localhost:3000/delete',
+    url: '/delete',
     type: 'POST',
     data: {file: fileId},
     success: function(response) {
@@ -68,7 +65,7 @@ $('#uploadForm').click(function (event) {
   formData.append('email',localStorage.getItem('email'));
   // Send AJAX request
   $.ajax({
-    url: 'http://localhost:3000/upload',
+    url: '/upload',
     type: 'POST',
     data: formData,
     processData: false, // Prevent jQuery from automatically transforming data into a query string
