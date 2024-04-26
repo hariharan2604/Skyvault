@@ -1,5 +1,6 @@
 const { MongoClient } = require('mongodb');
-
+const env = require("dotenv");
+env.config();
 const uri = process.env.MONGO_URI; // Assuming MongoDB is running locally on default port
 const client = new MongoClient(uri);
 
