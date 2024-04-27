@@ -33,7 +33,6 @@ AWS.config.update({
   secretAccessKey: process.env.SecretAccessKey,
   region: process.env.region
 });
-const s3 = new AWS.S3();
 const upload = multer({ storage });
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
@@ -119,12 +118,12 @@ app.post('/delete', async (req, res) => {
   const file = req.body.file;
   const filename = file.split('/');
   const bucketName = 'skyvaultmugu'; // Replace with your bucket name
-  const s3 = new AWS.S3();
+  // const s3 = new AWS.S3();
   
-  const params = {
-    Bucket: bucketName,
-    Key: file,
-  };
+  // const params = {
+  //   Bucket: bucketName,
+  //   Key: file,
+  // };
 
   // try {
   //   // Delete file from S3
@@ -211,4 +210,5 @@ app.post('/upload', upload.single("file"), async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
 module.exports = app;
