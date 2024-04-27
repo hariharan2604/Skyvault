@@ -5,8 +5,8 @@ const bcrypt = require("bcryptjs");
 const env = require("dotenv");
 const fs = require('fs');
 const AWS = require('aws-sdk');
-const LocalStorage = require('node-localstorage').LocalStorage;
-const localStorage = new LocalStorage('./scratch');
+// const LocalStorage = require('node-localstorage').LocalStorage;
+// const localStorage = new LocalStorage('scratch');
 const app = express();
 const port = 3000;
 const saltRounds = 10;
@@ -63,7 +63,7 @@ app.post("/signup", async (req, res) => {
       const hash = await bcrypt.hash(password, saltRounds);
       const result = await db.collection('users').insertOne({ email: email, password: hash });
       console.log(result);
-      localStorage.setItem('email', email);
+      // localStorage.setItem('email', email);
       res.sendFile(path.join(__dirname, "views", "home.html"));
     }
   } catch (err) {
