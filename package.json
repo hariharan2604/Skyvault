@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "type": "commonjs",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
+  "engines": {
+    "node": "21.x"
+  },
   "scripts": {
-    "start": "node --watch app.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
