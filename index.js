@@ -235,7 +235,7 @@ console.log('originalname :212', originalname);
 
     try {
       // Save file metadata to MongoDB
-      await db.collection('files').insertOne({ email: email, filename: file.originalname, originalname: originalname });
+      await db.collection('files').insertOne({ email: email, filename: file.originalname, originalname: file.originalname });
 
       // Return S3 file URL
       const fileUrl = data.Location;

@@ -18,7 +18,7 @@ $(document).ready(function(){
         // Loop through each file in the filesArray
         response.filesArray.forEach(function (fileObj) {
             // Construct the anchor tag for each file and append to filesHtml
-            filesHtml += `<div><span><a href='${response.link + fileObj.file}'>${fileObj.originalname}</a><br></span><button id='deleteFile' data-id='${localStorage.getItem('email')+"/"+fileObj.file}'>Delete</button><br></div>`;
+          filesHtml += `<div><span><a href='${response.link + fileObj.originalname}'>${fileObj.originalname}</a><br></span><button id='deleteFile' data-id='${localStorage.getItem('email')+"/"+fileObj.file}'>Delete</button><br></div>`;
         });
 
         // Set the HTML content of #test to the generated file links
