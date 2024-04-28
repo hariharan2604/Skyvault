@@ -237,7 +237,8 @@ app.post('/upload', upload.single("file"), async (req, res) => {
 
       // Return S3 file URL
       const fileUrl = data.Location;
-      res.status(200).json({ url: fileUrl });
+      // res.status(200).json({ url: fileUrl });
+      res.status(200).json({ code: 200, link: fileUrl });
     } catch (error) {
       console.error("Error saving file metadata to MongoDB:", error);
       res.status(500).json({ error: "Failed to save file metadata" });
