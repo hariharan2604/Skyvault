@@ -18,22 +18,22 @@ env.config();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 const multer = require("multer");
-
-const storage = multer.diskStorage({
-  destination: path.join(__dirname, "uploads"),
-  filename: (req, file, cb) => {
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
-  },
-});
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+// const storage = multer.diskStorage({
+//   destination: path.join(__dirname, "uploads"),
+//   filename: (req, file, cb) => {
+//     cb(
+//       null,
+//       file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+//     );
+//   },
+// });
 AWS.config.update({
   accessKeyId: process.env.AccessKeyID,
   secretAccessKey: process.env.SecretAccessKey,
   region: process.env.region
 });
-const upload = multer({ storage });
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
@@ -157,55 +157,92 @@ app.post('/delete', async (req, res) => {
 
   res.status(200).json({ code: 200, message: "Deleted succcesfully" });
 });
+// app.post('/upload', upload.single("file"), async (req, res) => {
+//   const filename = req.file.filename;
+//   const originalname = req.body.original_name;
+//   const email = req.body.email;
+
+//   // Create S3 service object
+//   const s3 = new AWS.S3();
+
+//   // Define the bucket name and key (path) for the file
+//   const bucketName = 'skyvaultmugu';
+//   const key = email + '/' + filename;
+
+//   // Specify the path to the file on your local machine
+//   const filePath = 'public/uploads/' + filename;
+
+//   try {
+//     // Read the file from the local file system
+//     const fileContent = fs.readFileSync(filePath);
+
+//     // Set the parameters for S3 upload
+//     const params = {
+//       Bucket: bucketName,
+//       Key: key,
+//       Body: fileContent
+//     };
+//     s3.upload(params, async (err, data) => {
+//       if (err) {
+//         console.error("Error uploading file to S3:", err);
+//         res.status(500).json({ code: 500, message: "Error uploading file to S3" });
+//       } else {
+//         try {
+          
+//           await db.collection('files').insertOne({ email: email, file: filename, originalname: originalname });
+//           const result = data.Location.split('/')[data.Location.split('/').length - 1];
+//           const link = process.env.S3 + email + "/" + result;
+//           console.log("File uploaded successfully to S3:", data.Location);
+//           // Assuming fs is imported and filename is correct
+//           fs.unlinkSync("public/uploads/" + filename);
+//           res.status(200).json({ code: 200, link: link });
+//         } catch (error) {
+//           console.error("Error inserting file into database:", error);
+//           res.status(500).json({ code: 500, message: "Error inserting file into database" });
+//         }
+//       }
+//     });
+//   } catch (err) {
+//     console.error("Error:", err);
+//     res.status(500).json({ code: 500, message: "Error occurred in uploading file" });
+//   }
+// });
 app.post('/upload', upload.single("file"), async (req, res) => {
-  const filename = req.file.filename;
+  const file = req.file;
   const originalname = req.body.original_name;
   const email = req.body.email;
 
-  // Create S3 service object
-  const s3 = new AWS.S3();
-
-  // Define the bucket name and key (path) for the file
-  const bucketName = 'skyvaultmugu';
-  const key = email + '/' + filename;
-
-  // Specify the path to the file on your local machine
-  const filePath = 'public/uploads/' + filename;
-
-  try {
-    // Read the file from the local file system
-    const fileContent = fs.readFileSync(filePath);
-
-    // Set the parameters for S3 upload
-    const params = {
-      Bucket: bucketName,
-      Key: key,
-      Body: fileContent
-    };
-    s3.upload(params, async (err, data) => {
-      if (err) {
-        console.error("Error uploading file to S3:", err);
-        res.status(500).json({ code: 500, message: "Error uploading file to S3" });
-      } else {
-        try {
-          
-          await db.collection('files').insertOne({ email: email, file: filename, originalname: originalname });
-          const result = data.Location.split('/')[data.Location.split('/').length - 1];
-          const link = process.env.S3 + email + "/" + result;
-          console.log("File uploaded successfully to S3:", data.Location);
-          // Assuming fs is imported and filename is correct
-          fs.unlinkSync("public/uploads/" + filename);
-          res.status(200).json({ code: 200, link: link });
-        } catch (error) {
-          console.error("Error inserting file into database:", error);
-          res.status(500).json({ code: 500, message: "Error inserting file into database" });
-        }
-      }
-    });
-  } catch (err) {
-    console.error("Error:", err);
-    res.status(500).json({ code: 500, message: "Error occurred in uploading file" });
+  // Check if file exists
+  if (!file) {
+    return res.status(400).json({ error: "No file uploaded" });
   }
+
+  // Prepare parameters for S3 upload
+  const params = {
+    Bucket: process.env.AWS_S3_BUCKET_NAME,
+    Key: `${email}/${file.originalname}`,
+    Body: file.buffer
+  };
+
+  // Upload file to S3
+  s3.upload(params, async (err, data) => {
+    if (err) {
+      console.error("Error uploading file to S3:", err);
+      return res.status(500).json({ error: "Failed to upload file" });
+    }
+
+    try {
+      // Save file metadata to MongoDB
+      await db.collection('files').insertOne({ email: email, filename: file.originalname, originalname: originalname });
+
+      // Return S3 file URL
+      const fileUrl = data.Location;
+      res.status(200).json({ url: fileUrl });
+    } catch (error) {
+      console.error("Error saving file metadata to MongoDB:", error);
+      res.status(500).json({ error: "Failed to save file metadata" });
+    }
+  });
 });
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
