@@ -211,7 +211,7 @@ app.post('/upload', upload.single("file"), async (req, res) => {
   const file = req.file;
   const originalname = req.body.original_name;
   const email = req.body.email;
-
+  const s3 = new AWS.S3();
   // Check if file exists
   if (!file) {
     return res.status(400).json({ error: "No file uploaded" });
