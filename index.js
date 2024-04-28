@@ -219,7 +219,7 @@ app.post('/upload', upload.single("file"), async (req, res) => {
 
   // Prepare parameters for S3 upload
   const params = {
-    Bucket: process.env.AWS_S3_BUCKET_NAME,
+    Bucket: "skyvaultmugu",
     Key: `${email}/${file.originalname}`,
     Body: file.buffer
   };
