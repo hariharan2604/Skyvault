@@ -209,7 +209,9 @@ app.post('/delete', async (req, res) => {
 // });
 app.post('/upload', upload.single("file"), async (req, res) => {
   const file = req.file;
+console.log('file :210', file);
   const originalname = req.body.original_name;
+console.log('originalname :212', originalname);
   const email = req.body.email;
   const s3 = new AWS.S3();
   // Check if file exists
